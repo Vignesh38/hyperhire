@@ -7,6 +7,9 @@ export const useInView = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if window is defined to ensure we're running on the client-side
+    if (typeof window === "undefined") return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
